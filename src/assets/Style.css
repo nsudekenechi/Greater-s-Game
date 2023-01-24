@@ -1,0 +1,31 @@
+#introCon {
+  animation: animateCon 5s forwards;
+  background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 1)),
+    url(./Files/Images/1.jpg) center/cover;
+}
+#startGame a {
+  -webkit-text-stroke: 4px rgba(255, 255, 255, 0.6);
+  letter-spacing: 5px;
+  display: block;
+  text-shadow: 0px 10px 20px pink;
+}
+#startGame a:hover {
+  rotate: -3deg;
+  padding: 5px;
+}
+#startGame a:hover::before {
+  content: "<";
+}
+#startGame a:hover::after {
+  content: ">";
+}
+@keyframes animateCon {
+  from {
+    background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 1)),
+      url(./Files/Images/1.jpg) center/cover;
+  }
+  to {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+      url(./Files/Images/1.jpg) center/cover;
+  }
+}
