@@ -1,6 +1,16 @@
+::selection {
+  background-color: transparent;
+}
+input {
+  outline: none;
+}
 #introCon {
-  animation: animateCon 5s forwards;
-  background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 1)),
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1)),
+    url(./Files/Images/1.jpg) center/cover;
+  animation: 2s animateCon;
+}
+#introCon2 {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 1)),
     url(./Files/Images/1.jpg) center/cover;
 }
 #startGame a {
@@ -67,14 +77,18 @@
   color: white; */
   transform: rotateY(180deg);
 }
+
+/* Style for helper card */
+.helper {
+  outline: 2px solid green;
+  /* animation: animateHelper 2s infinite linear; */
+}
 @keyframes animateCon {
   from {
-    background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 1)),
-      url(./Files/Images/1.jpg) center/cover;
+    opacity: 0.3;
   }
   to {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-      url(./Files/Images/1.jpg) center/cover;
+    opacity: 1;
   }
 }
 @keyframes flipUnderlay {

@@ -7,7 +7,7 @@ export const Cards = ({ flipCard }) => {
           flipCard.animateFlipCard
             ? `rotate ${flipCard.verified ? "valid" : "invalid"}`
             : ""
-        }`}
+        } ${flipCard.helper ? "animate-pulse helper " : ""}`}
       >
         <div className="flip-card-front  flex flex-col items-center justify-center gap-5">
           <BsPatchQuestion className="text-3xl" />
@@ -21,7 +21,7 @@ export const Cards = ({ flipCard }) => {
               className="w-[100%] h-[100%]"
             />
           </div>
-          <h1 className="">Hello Card</h1>
+          <h1 className="text-xl">{flipCard.power}</h1>
         </div>
       </div>
     </div>
