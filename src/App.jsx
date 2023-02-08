@@ -2,11 +2,14 @@ import "./assets/Output.css";
 import "./assets/Style.css";
 import { Intro } from "./Components/Intro";
 import { StartGame } from "./Components/StartGame";
-import { useEffect, useState } from "react";
 import { NewGame } from "./Components/NewGame";
-import { Data } from "./Data";
-import { Routes, Route, useLocation } from "react-router-dom";
 import { Settings } from "./Components/Settings";
+import { BestScore } from "./Components/BestScore";
+import { Data } from "./Data";
+import { useEffect, useState } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { useTimer } from "react-timer-hook";
+import { Instruction } from "./Components/Instruction";
 function App() {
   let description = {
     images: ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"],
@@ -83,12 +86,15 @@ function App() {
           : "",
     };
   };
+
   // Handles Playing Music and Adjusting Music Volume
   const handleAudio = (audio, audioVolume) => {
-    console.log(location.pathname);
-    audio.play();
     audio.volume = audioVolume;
+    if (location.pathname != "/") {
+      audio.play();
+    }
   };
+  const { seconds } = useTimer({ autoStart: true });
   const [cardInfo, setCards] = useState(handleSetCards());
   const [scoreBoard, setScoreBoard] = useState(handleSetScoreBoard());
   const [audio, setAudio] = useState({
@@ -103,6 +109,7 @@ function App() {
       let scores = {
         highScores: 0,
         bestMoves: 0,
+        bestTime: "00:00:00",
         cardInfo: {},
         scoreBoard: {},
         audio: {
@@ -150,6 +157,8 @@ function App() {
           <Route path="/newGame" element={<NewGame />}></Route>
           <Route path="/continueGame" element={<NewGame />}></Route>
           <Route path="/settings" element={<Settings />}></Route>
+          <Route path="/bestScore" element={<BestScore />}></Route>
+          <Route path="/instruction" element={<Instruction />}></Route>
         </Routes>
       </Data.Provider>
     </>

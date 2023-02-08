@@ -13,7 +13,7 @@ export const NewGame = () => {
 
   const [exitGame, setExitGame] = useState(false);
   let audio = new Audio("");
-  audio.volume = 0.4;
+  audio.volume = cardsItems.audio.sfxVolume;
   const verifyFlip = (item, src) => {
     // Playing audio only when item have never been flipped
     if (item.isFlipped != true) {
@@ -26,7 +26,6 @@ export const NewGame = () => {
     let prev = {
       cards: [...cardsItems.cardInfo.cards],
       target: cardsItems.cardInfo.target,
-      description: cardsItems.cardInfo.description,
     };
 
     prev.cards.map((item, index) => {
@@ -70,7 +69,11 @@ export const NewGame = () => {
       return item;
     });
 
-    cardsItems.setCards(prev);
+    cardsItems.setCards((prevItems) => ({
+      ...prevItems,
+      cards: prev.cards,
+      target: prev.target,
+    }));
   };
   const randomizeCards = () => {
     let prevCards = cardsItems.cardInfo.cards.map((item) =>
@@ -151,10 +154,9 @@ export const NewGame = () => {
       if (failedCards != null) {
         prev.cards[failedCards].isFlipped = false;
 
-        //Reseting failed cards so that even if user clicks on the same failed card over and over again, its going to keep removing flip
+        //Reseting failed cards so that even if user clicks on the same failed card over and over again, its going to keep keep flip
         setFailedCards(null);
       }
-      // cardsItems.setCards(prev);
     }, 500);
   }, [failedCards]);
 
@@ -197,6 +199,7 @@ export const NewGame = () => {
       let storedScores = JSON.parse(localStorage.getItem("greaterGame"));
       // Assigning new high score if current score is greater than stored score
       let newScores = {
+        ...storedScores,
         cardInfo: {},
         scoreBoard: {},
         highScores:

@@ -33,6 +33,9 @@ export const StartGame = () => {
         <Link to="/bestScore" onMouseOver={playSound}>
           Best Score
         </Link>
+        <Link to="/instruction" onMouseOver={playSound}>
+          Instruction
+        </Link>
       </div>
     </div>
   );
