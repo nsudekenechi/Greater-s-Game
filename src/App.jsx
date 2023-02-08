@@ -8,7 +8,6 @@ import { BestScore } from "./Components/BestScore";
 import { Data } from "./Data";
 import { useEffect, useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-import { useTimer } from "react-timer-hook";
 import { Instruction } from "./Components/Instruction";
 function App() {
   let description = {
@@ -86,6 +85,7 @@ function App() {
           : "",
     };
   };
+  let date = new Date();
 
   // Handles Playing Music and Adjusting Music Volume
   const handleAudio = (audio, audioVolume) => {
@@ -94,7 +94,6 @@ function App() {
       audio.play();
     }
   };
-  const { seconds } = useTimer({ autoStart: true });
   const [cardInfo, setCards] = useState(handleSetCards());
   const [scoreBoard, setScoreBoard] = useState(handleSetScoreBoard());
   const [audio, setAudio] = useState({

@@ -7,6 +7,8 @@ import { AiFillStar } from "react-icons/ai";
 import { BiRefresh } from "react-icons/bi";
 import { GiCancel } from "react-icons/gi";
 import { Link } from "react-router-dom";
+import { useStopwatch } from "react-timer-hook";
+
 export const NewGame = () => {
   const cardsItems = useContext(Data);
   const [failedCards, setFailedCards] = useState(null);
@@ -14,6 +16,8 @@ export const NewGame = () => {
   const [exitGame, setExitGame] = useState(false);
   let audio = new Audio("");
   audio.volume = cardsItems.audio.sfxVolume;
+  const { seconds, minutes, hours } = useStopwatch({ autoStart: true });
+
   const verifyFlip = (item, src) => {
     // Playing audio only when item have never been flipped
     if (item.isFlipped != true) {
@@ -142,7 +146,9 @@ export const NewGame = () => {
   const handleExitGame = () => {
     setExitGame((prev) => !prev);
   };
-
+  const editTimer = (time) => {
+    return `${time < 10 ? `0${time}` : `${time}`}`;
+  };
   // Getting Failed card and removing the flipped, so that its going to keep flipping
   useEffect(() => {
     let prev = {
@@ -194,6 +200,9 @@ export const NewGame = () => {
             Math.floor(cardsItems.scoreBoard.moves / 2)
         ),
         bestMoves: Math.floor(cardsItems.scoreBoard.moves / 2),
+        bestTime: `${editTimer(hours)}:${editTimer(minutes)}:${editTimer(
+          seconds
+        )}`,
       };
 
       let storedScores = JSON.parse(localStorage.getItem("greaterGame"));
@@ -211,6 +220,12 @@ export const NewGame = () => {
           storedScores.bestMoves < scores.bestMoves
             ? storedScores.bestMoves
             : scores.bestMoves,
+        // If stored time is less than current time, then best time is stored time, if current time is less than stored time, current time is best time
+        bestTime:
+          storedScores.bestTime != "00:00:00" &&
+          storedScores.bestTime < scores.bestTime
+            ? storedScores.bestTime
+            : scores.bestTime,
       };
       localStorage.setItem("greaterGame", JSON.stringify(newScores));
     }
