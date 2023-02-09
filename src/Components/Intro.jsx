@@ -1,4 +1,3 @@
-import { StartGame } from "./StartGame";
 import { Link } from "react-router-dom";
 export const Intro = () => {
   return (
