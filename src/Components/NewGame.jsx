@@ -34,6 +34,11 @@ export const NewGame = () => {
 
     prev.cards.map((item, index) => {
       if (item.id == id) {
+        // Getting Number of Moves
+        cardsItems.setScoreBoard((prev) => ({
+          ...prev,
+          moves: !item.isVerified ? prev.moves + 1 : prev.moves,
+        }));
         if (prev.target == "") {
           //   Using Target to keep track of correctly selected tags
           prev.target = item.power;
@@ -44,23 +49,20 @@ export const NewGame = () => {
           let similarCards = prev.cards.filter(
             (item) => item.power == prev.target
           );
+          if (!item.isVerified) {
+            cardsItems.setScoreBoard((prev) => ({
+              ...prev,
+              score: prev.score + 1,
+              itemsMatched: similarCards,
+              selectedCards: prev.selectedCards + 1,
+            }));
+          }
           item.isVerified = true;
-          cardsItems.setScoreBoard((prev) => ({
-            ...prev,
-            score: prev.score + 1,
-            itemsMatched: similarCards,
-            selectedCards: prev.selectedCards + 1,
-          }));
         } else {
           item.isVerified = false;
           setFailedCards(index);
         }
 
-        // Getting Number of Moves
-        cardsItems.setScoreBoard((prev) => ({
-          ...prev,
-          moves: prev.moves + 1,
-        }));
         item.isFlipped = verifyFlip(
           item,
           item.isVerified ? "flipcard.mp3" : "wrongcard.wav"
@@ -267,7 +269,7 @@ export const NewGame = () => {
       </div>
 
       {cardsItems.scoreBoard.gameWon && (
-        <div className="fixed w-[100%] h-[100%] backdrop-blur-sm bg-[rgba(0,0,0,.5)] flex justify-center items-center">
+        <div className="fixed w-[100%] h-[100%] backdrop-blur-sm bg-[rgba(0,0,0,.5)] flex justify-center items-center z-20">
           <div className="flex flex-col gap-2">
             {cardsItems.scoreBoard.moves <= 6 ? (
               <h1 className="flex justify-center items-center gap-5 text-yellow-500  ">
