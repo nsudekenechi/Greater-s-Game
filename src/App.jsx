@@ -93,7 +93,7 @@ function App() {
       audio.play();
     }
   };
-  const playMusic = () => {};
+
   const [cardInfo, setCards] = useState(handleSetCards());
   const [scoreBoard, setScoreBoard] = useState(handleSetScoreBoard());
   const [audio, setAudio] = useState({
@@ -102,6 +102,12 @@ function App() {
     SFX: [new Audio("./Files/Audio/2.wav")],
     sfxVolume: saved ? saved.audio.sfxVolume : 0.1,
   });
+
+  const playMusic = () => {
+    if (audio.backgroundMusic.paused) {
+      audio.backgroundMusic.play();
+    }
+  };
 
   useEffect(() => {
     if (!localStorage.getItem("greaterGame")) {
@@ -148,6 +154,7 @@ function App() {
           scoreBoard,
           setAudio,
           audio,
+          playMusic,
         }}
       >
         <Routes>

@@ -6,12 +6,12 @@ input {
 }
 #introCon {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1)),
-    url(./Files/Images/1.jpg) center/cover;
+    url(../../public/Files/Images/1.jpg) center/cover;
   animation: 2s animateCon;
 }
 #introCon2 {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 1)),
-    url(./Files/Images/1.jpg) center/cover;
+    url(../../public/Files/Images/1.jpg) center/cover;
 }
 #startGame a {
   -webkit-text-stroke: 4px rgba(255, 255, 255, 0.6);

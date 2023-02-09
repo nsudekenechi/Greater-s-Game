@@ -1,5 +1,10 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Data } from "../Data";
+
 export const Intro = () => {
+  const contextData = useContext(Data);
+
   return (
     <>
       <div className="flex justify-center items-center w-[100%] h-[100vh]">
@@ -13,7 +18,10 @@ export const Intro = () => {
           </h1>
 
           <Link to={"/startGame"} className="w-[100%] flex justify-center">
-            <button className="bg-blue-500 p-3 w-[50%] rounded-md text-white shadow-md shadow-blue-600">
+            <button
+              onClick={contextData.playMusic}
+              className="bg-blue-500 p-3 w-[50%] rounded-md text-white shadow-md shadow-blue-600"
+            >
               Continue
             </button>
           </Link>
