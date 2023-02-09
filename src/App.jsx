@@ -85,7 +85,6 @@ function App() {
           : "",
     };
   };
-  let date = new Date();
 
   // Handles Playing Music and Adjusting Music Volume
   const handleAudio = (audio, audioVolume) => {
@@ -94,6 +93,7 @@ function App() {
       audio.play();
     }
   };
+  const playMusic = () => {};
   const [cardInfo, setCards] = useState(handleSetCards());
   const [scoreBoard, setScoreBoard] = useState(handleSetScoreBoard());
   const [audio, setAudio] = useState({

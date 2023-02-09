@@ -39,7 +39,7 @@ export const Settings = () => {
       ></div>
 
       <div className="bg-[rgba(255,255,255,.3)] w-[80%] h-[80%] rounded-md   relative flex  flex-col gap-10 justify-center items-center backdrop-blur-sm">
-        <div className="flex flex-col items-center gap-3 w-[50%]">
+        <div className="flex flex-col  items-center gap-3 w-[100%] md:w-[50%]">
           <span className="px-5 py-2 rounded-md bg-blue-900 text-white   text-md border border-blue-500">
             Music
           </span>
@@ -47,12 +47,12 @@ export const Settings = () => {
             type="range"
             name="backgroundMusicVolume"
             value={cardsItems.audio.backgroundMusicVolume * 100}
-            className="w-[50%]"
+            className="w-[80%] md:w-[50%]"
             onChange={handleChange}
           />
         </div>
 
-        <div className="flex flex-col items-center gap-3 w-[50%]">
+        <div className="flex flex-col items-center gap-3  w-[100%] md:w-[50%]">
           <span className="px-5 py-2 rounded-md bg-blue-900 text-white   text-md border border-blue-500">
             SFX
           </span>
@@ -60,20 +60,20 @@ export const Settings = () => {
             type="range"
             name="sfxVolume"
             value={cardsItems.audio.sfxVolume * 100}
-            className="w-[50%]"
+            className="w-[80%] md:w-[50%]"
             onChange={handleChange}
           />
         </div>
 
-        <div className="gap-20 flex mt-20">
+        <div className=" flex flex-col md:flex-row gap-5 md:gap-20 mt-20">
           <Link to="/startGame" onClick={saveChanges}>
-            <button className="bg-green-600 px-20 py-2 text-white rounded-md flex items-center gap-2">
+            <button className=" bg-green-600 px-20 py-2 text-white rounded-md flex items-center justify-center gap-2 w-[100%]">
               OK
               <GiCheckMark />
             </button>
           </Link>
           <Link to="/startGame" onClick={cancelChanges}>
-            <button className="bg-red-600 px-20 py-2 text-white rounded-md flex items-center gap-2">
+            <button className="bg-red-600 px-20 py-2 text-white rounded-md flex items-center justify-center gap-2 w-[100%]">
               Cancel
               <GiCancel />
             </button>

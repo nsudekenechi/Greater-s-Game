@@ -26,15 +26,15 @@ export const Instruction = () => {
         id="introCon2"
       ></div>
 
-      <div className="bg-[rgba(255,255,255,.3)] w-[80%] h-[80%] rounded-md backdrop-blur-sm relative flex  flex-col gap-10 justify-center items-center p-5">
+      <div className="bg-[rgba(255,255,255,.3)] rounded-md backdrop-blur-sm relative flex  flex-col justify-center items-center px-5 gap-5 h-[80%] w-[80%]  md:px-20 md:gap-10  md:text-3xl lg:text-xl">
         <h1 className="text-3xl text-white text-center underline underline-offset-8">
           Instruction
         </h1>
-        <div className="my-5">
-          <p className="text-xl text-blue-500 font-bold">{instruction}</p>
+        <div className="my-5 md:my-0">
+          <p className=" text-blue-500 font-bold text-2xl">{instruction}</p>
         </div>
         <Link to="/startGame">
-          <button className="bg-green-600 px-20 py-2 text-white rounded-md flex items-center gap-2">
+          <button className="text-lg bg-green-600 px-20 py-2 text-white rounded-md flex items-center gap-2">
             OK
             <GiCheckMark />
           </button>

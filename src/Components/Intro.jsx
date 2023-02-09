@@ -9,7 +9,7 @@ export const Intro = () => {
           id="introCon"
         ></div>
         <div className="flex flex-col justify-center items-center gap-10">
-          <h1 className="text-white text-6xl font-[Satisfy]">
+          <h1 className="text-white text-6xl font-[Satisfy] text-center md:text-left">
             The Greater's Game
           </h1>
 

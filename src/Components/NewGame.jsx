@@ -232,14 +232,14 @@ export const NewGame = () => {
   }, [cardsItems.scoreBoard.gameWon]);
   return (
     <div className="flex justify-center items-center w-[100%] h-[100vh]">
-      <div className="absolute top-0 left-0 text-white text-3xl p-8">
+      <div className="absolute top-0 left-0 text-white text-3xl p-0 md:p-8">
         <GiCancel className="cursor-pointer" onClick={handleExitGame} />
       </div>
       <div
         className="fixed w-[100%] h-[100%] top-0 left-0 -z-10 animate-pulse"
         id="introCon"
       ></div>
-      <div className="bg-white w-[80%] h-[80%] rounded-md shadow-lg  relative">
+      <div className="bg-white w-[90%] md:w-[80%] h-[80%] rounded-md shadow-lg  relative">
         <ScoreBoard
           scoreBoard={{
             score: Math.floor(cardsItems.scoreBoard.score / 2),
@@ -249,7 +249,7 @@ export const NewGame = () => {
           }}
         />
 
-        <div className="grid grid-cols-12 gap-10 p-10 h-[90%]">
+        <div className="grid grid-cols-12 px-5 py-10 gap-5 md:gap-10 md:p-10 h-[90%]  overflow-x-auto">
           {cardsItems.cardInfo.cards.map((item) => (
             <Cards
               flipCard={{

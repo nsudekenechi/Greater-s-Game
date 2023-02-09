@@ -18,7 +18,7 @@ export const StartGame = () => {
         id="introCon2"
       ></div>
       <div
-        className=" flex flex-col  text-white lg:text-5xl lg:gap-10 md:text-3xl md:gap-5"
+        className=" flex flex-col  text-white lg:text-5xl lg:gap-10 md:text-3xl md:gap-5 gap-3"
         id="startGame"
       >
         <Link to="/newGame" onMouseOver={playSound}>
